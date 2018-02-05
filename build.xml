@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="UploadTest" default="default" basedir=".">
-    <description>Builds, tests, and runs the project UploadTest.</description>
+<project name="MatLab_ValidatorTool" default="default" basedir=".">
+    <description>Builds, tests, and runs the project MatLab_ValidatorTool.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

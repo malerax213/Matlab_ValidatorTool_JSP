@@ -1,7 +1,7 @@
 <%-- 
     Document   : LogReader
     Created on : 01-feb-2018, 11:09:03
-    Author     : alexa
+    Author     : alex
 --%>
 
 <%@page import="java.io.FileInputStream"%>
