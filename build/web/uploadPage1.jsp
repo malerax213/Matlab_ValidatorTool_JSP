@@ -32,6 +32,5 @@
                 </table>
             </center>
         </form>
-        <p>Note: The path of these files is: C:\solDirectory</p>
     </body>
 </html>

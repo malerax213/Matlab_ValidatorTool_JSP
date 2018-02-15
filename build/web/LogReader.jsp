@@ -20,9 +20,8 @@
     <body>
         <p>Output:</p>
         <%
-            String txtFilePath = "C:\\solFile\\wlog.txt";
+            File txtFilePath = new File(System.getProperty("user.dir")+"/solFile");
             BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
-            StringBuilder sb = new StringBuilder();
             String line;
 
             while ((line = reader.readLine()) != null) {
