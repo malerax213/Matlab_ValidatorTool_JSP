@@ -75,8 +75,8 @@ public class myServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getParameter("button1") != null) {
-            File[] files = new File("C:\\solDirectory").listFiles();
-            File[] model = new File("C:\\solFile").listFiles();
+            File[] files = new File(System.getProperty("user.dir")+"/solDirectory").listFiles();
+            File[] model = new File(System.getProperty("user.dir")+"/solFile").listFiles();
             Validator.compareFilesWithModel(files, 1, model[0]);
             response.sendRedirect("LogReader.jsp");
             return ;

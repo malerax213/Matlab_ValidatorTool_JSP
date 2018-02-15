@@ -28,7 +28,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet("/uploadServlet")
 public class uploadServlet extends HttpServlet {
 
-    private final String UPLOAD_DIRECTORY = "C:\\solDirectory";
+    private final String UPLOAD_DIRECTORY = System.getProperty("user.dir")+"/solDirectory";
     private static final long serialVersionUID = 1L;
 
     /**
@@ -60,13 +60,13 @@ public class uploadServlet extends HttpServlet {
                 List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
-                        File dir = new File("C:\\solDirectory");
+                        File dir = new File(System.getProperty("user.dir")+"/solDirectory");
                         dir.mkdir();
                         String name = new File(item.getName()).getName();
                         item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
                     }
                 }
-                request.setAttribute("message", "File uploaded successfully.");
+                request.setAttribute("message", "File uploaded successfully at: "+System.getProperty("user.dir")+"/solDirectory");
             } catch (Exception ex) {
                 request.setAttribute("message", "File upload failed due to : " + ex);
             }
