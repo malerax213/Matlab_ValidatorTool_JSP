@@ -28,7 +28,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet("/uploadServlet2")
 public class uploadServlet2 extends HttpServlet {
 
-    private final String UPLOAD_DIRECTORY = System.getProperty("user.dir")+"/solFile";
+    private final String UPLOAD_DIRECTORY = System.getProperty("user.dir")+"/solFile";;
     private static final long serialVersionUID = 1L;
 
     /**

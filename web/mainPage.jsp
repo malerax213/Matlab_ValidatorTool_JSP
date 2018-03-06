@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="java.io.File"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,15 @@
         <title>MatLab Validator Tool</title>
     </head>
     <body>
+        <%
+            response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+            
+            if(session.getAttribute("username")==null){
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <h1>Matlab Validator Tool</h1>
+        <p>Hi, <%= session.getAttribute( "username" ) %>!</p>
         <p>How to use this validator: </p>
         <p>Step 1: Upload the code pressing the "Upload code" button from the "Code" table </p>
         <p>
@@ -62,6 +71,8 @@
     </tr>
 </table>
 </p>
-
+<form method="link" action="Logout">
+    <input type="submit" value="Logout"/>
+</form>
 </body>
 </html>

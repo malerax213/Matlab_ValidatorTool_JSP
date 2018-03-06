@@ -20,10 +20,9 @@
     <body>
         <p>Output:</p>
         <%
-            File txtFilePath = new File(System.getProperty("user.dir")+"/solFile");
+            File txtFilePath = new File(System.getProperty("user.dir")+"/solFile/wlog.txt");
             BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
             String line;
-
             while ((line = reader.readLine()) != null) {
                 out.println(line);
                 out.println("<br/>");

@@ -89,7 +89,7 @@ public class Validator {
             File model) throws IOException {
         String comparisonFileName;
 
-        PrintWriter log = new PrintWriter("C:\\solFile\\wlog.txt", "UTF-8");
+        PrintWriter log = new PrintWriter(System.getProperty("user.dir")+"/solFile/wlog.txt", "UTF-8");
         
         for (File file : files) {
             if (file.canRead() && file.isFile()) {
