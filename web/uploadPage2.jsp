@@ -32,5 +32,8 @@
                 </table>
             </center>
         </form>
+        <form name="myForm" action="mainPage.jsp" method="POST">
+            <input type="submit" value="Go back" />
+        </form>
     </body>
 </html>

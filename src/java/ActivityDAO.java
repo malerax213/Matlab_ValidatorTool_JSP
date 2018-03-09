@@ -3,25 +3,22 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 
-public class LoginDAO {
+public class ActivityDAO {
     
-    String sql = "select * from login where login=? and pass=?";
     String url = "jdbc:mysql://localhost:3306/navin";
     String username = "root";
     String password = "admin";
-    public boolean check(String uname, String pass){
+    public boolean sumbit(String aname, String acourse){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = (Connection) DriverManager.getConnection(url, username,password);
+            String sql = "insert into activity values('"+aname +"','"+acourse+"');";
             PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
-            st.setString(1, uname);
-            st.setString(2, pass);
-            ResultSet rs = st.executeQuery();
-            if(rs.next()){
-                return true;
-            }
+            st.executeUpdate();
+            return true;
         }catch(Exception e){
             e.printStackTrace();
         }

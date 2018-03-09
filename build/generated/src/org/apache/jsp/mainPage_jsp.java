@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.io.File;
+import javax.servlet.http.HttpSession;
 
 public final class mainPage_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -46,6 +47,7 @@ public final class mainPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -53,7 +55,19 @@ public final class mainPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>MatLab Validator Tool</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        ");
+
+            response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+            
+            if(session.getAttribute("username")==null){
+                response.sendRedirect("login.jsp");
+            }
+        
+      out.write("\n");
       out.write("        <h1>Matlab Validator Tool</h1>\n");
+      out.write("        <p>Hi, ");
+      out.print( session.getAttribute( "username" ) );
+      out.write("!</p>\n");
       out.write("        <p>How to use this validator: </p>\n");
       out.write("        <p>Step 1: Upload the code pressing the \"Upload code\" button from the \"Code\" table </p>\n");
       out.write("        <p>\n");
@@ -104,7 +118,9 @@ public final class mainPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </tr>\n");
       out.write("</table>\n");
       out.write("</p>\n");
-      out.write("\n");
+      out.write("<form method=\"link\" action=\"Logout\">\n");
+      out.write("    <input type=\"submit\" value=\"Logout\"/>\n");
+      out.write("</form>\n");
       out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

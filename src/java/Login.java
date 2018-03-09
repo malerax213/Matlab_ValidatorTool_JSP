@@ -21,7 +21,6 @@ import javax.servlet.http.HttpSession;
 public class Login extends HttpServlet {
 
     LoginDAO dao = new LoginDAO();
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -39,7 +38,7 @@ public class Login extends HttpServlet {
         if (dao.check(uname, pass)) {
             HttpSession session = request.getSession();
             session.setAttribute("username", uname);
-            response.sendRedirect("mainPage.jsp");
+            response.sendRedirect("mainPageAdmin.jsp");
         } else {
             response.sendRedirect("login.jsp");
         }
