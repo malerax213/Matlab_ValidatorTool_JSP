@@ -27,7 +27,7 @@
         %>
         <h1>Matlab Validator Tool</h1>
         <p>Hi, <%= session.getAttribute( "username" ) %>!</p>
-        <p>See activities:</p>
+        <p>Handle activities:</p>
         <table border="1">
             <tr>
                 <td align="center"><b>Activities</b></td>

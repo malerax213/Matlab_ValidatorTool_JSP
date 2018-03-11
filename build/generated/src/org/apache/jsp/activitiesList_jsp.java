@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -51,6 +52,7 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -65,6 +67,7 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                <tr>\n");
       out.write("                    <td>Activity name</td>\n");
       out.write("                    <td>Course</td>\n");
+      out.write("                    <td>Solution uploaded</td>\n");
       out.write("                    <td>Delete Activity</td>\n");
       out.write("                </tr>\n");
       out.write("                ");
@@ -99,7 +102,38 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("</td>\n");
       out.write("                            </tr>\n");
       out.write("                        </table>\n");
-      out.write("                    </td><td>\n");
+      out.write("                    </td>\n");
+      out.write("                    ");
+
+                        Blob b = rs.getBlob("solution");
+                        if(!rs.wasNull()){
+                    
+      out.write("\n");
+      out.write("                    <td>\n");
+      out.write("                        <table>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td>Si</td>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </table>\n");
+      out.write("                    </td>\n");
+      out.write("                    ");
+
+                        }else{
+                    
+      out.write("\n");
+      out.write("                    <td>\n");
+      out.write("                        <table>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td>No</td>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </table>\n");
+      out.write("                    </td>\n");
+      out.write("                    ");
+
+                        }
+                    
+      out.write("\n");
+      out.write("                    <td>\n");
       out.write("                        <table>\n");
       out.write("                            <tr>\n");
       out.write("                                <td>\n");

@@ -16,9 +16,11 @@
     </head>
     <body>
         <h1>Create activity</h1>
-            <form action="Activity" method="post">
+            <form method="post" action="Activity" enctype="multipart/form-data">
                 Enter the name of the activity : <input type ="text" name="aname"><br>
                 Enter its course : <input type="password" name="acourse"><br>
+                Upload solution : <input type="file" name="file" size="50"/>
+                <p></p>
                 <input type="submit" name="button1" value="Sumbit" />     
             </form>
             <p></p>

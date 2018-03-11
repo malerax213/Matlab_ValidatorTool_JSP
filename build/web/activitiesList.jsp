@@ -3,6 +3,7 @@
     Created on : 09-mar-2018, 11:39:58
     Author     : alexa
 --%>
+<%@page import="java.sql.Blob"%>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.Connection" %>
@@ -22,6 +23,7 @@
                 <tr>
                     <td>Activity name</td>
                     <td>Course</td>
+                    <td>Solution uploaded</td>
                     <td>Delete Activity</td>
                 </tr>
                 <%
@@ -50,7 +52,32 @@
                                 <td><%=rs.getInt("course")%></td>
                             </tr>
                         </table>
-                    </td><td>
+                    </td>
+                    <%
+                        Blob b = rs.getBlob("solution");
+                        if(!rs.wasNull()){
+                    %>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>Si</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <%
+                        }else{
+                    %>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>No</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <%
+                        }
+                    %>
+                    <td>
                         <table>
                             <tr>
                                 <td>
