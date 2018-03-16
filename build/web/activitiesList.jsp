@@ -106,8 +106,7 @@
             %>
         </form>
         <p></p>
-        <form name="myForm" action="mainPageAdmin.jsp" method="POST">
-            <input type="submit" value="Go back" />
-        </form>
+        <p></p>
+        <button type="button" name="back" onclick="history.back()">Go back</button>
     </body>
 </html>

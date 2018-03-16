@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import javax.servlet.ServletException;
@@ -34,11 +33,6 @@ public class Activity extends HttpServlet {
 
         Part file = request.getPart("file");
         if (file != null) {
-            // prints out some information for debugging
-            System.out.println(file.getName());
-            System.out.println(file.getSize());
-            System.out.println(file.getContentType());
-
             // obtains input stream of the upload file
             inputStream = file.getInputStream();
         }

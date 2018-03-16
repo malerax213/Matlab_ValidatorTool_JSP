@@ -47,6 +47,20 @@
             </tr>
         </table>
         <p></p>
+        <p>Do tests:</p>
+        <table border="1">
+            <tr>
+                <td align="center"><b>Activities</b></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form name="myForm" action="adminTests.jsp" method="GET">
+                        <input type="submit" value="Go to tests page" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <p></p>
 <form method="link" action="Logout">
     <input type="submit" value="Logout"/>
 </form>

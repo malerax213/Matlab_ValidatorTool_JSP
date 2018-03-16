@@ -14,8 +14,9 @@ public class ActivityDAO {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = (Connection) DriverManager.getConnection(url, username,password);
-            String sql = "insert into activity values('"+aname+"','"+acourse+"','"+file+"');";
+            String sql = "insert into activity values('"+aname+"','"+acourse+"',?);";
             PreparedStatement st = (PreparedStatement) con.prepareStatement(sql);
+            st.setBlob(1, file);
             st.executeUpdate();
             return true;
         }catch(Exception e){
