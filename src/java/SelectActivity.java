@@ -43,7 +43,7 @@ public class SelectActivity extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SelectActivity.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("/resultAdmin.jsp").forward(request, response);
+        request.getRequestDispatcher("/result.jsp").forward(request, response);
     }
 
 }

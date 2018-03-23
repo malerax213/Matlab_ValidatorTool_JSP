@@ -24,7 +24,6 @@
                     <td>Activity name</td>
                     <td>Course</td>
                     <td>Solution uploaded</td>
-                    <td>Delete Activity</td>
                 </tr>
                 <%
                     try {
@@ -55,7 +54,7 @@
                     </td>
                     <%
                         Blob b = rs.getBlob("solution");
-                        if(!rs.wasNull()){
+                        if (!rs.wasNull()) {
                     %>
                     <td>
                         <table>
@@ -65,7 +64,7 @@
                         </table>
                     </td>
                     <%
-                        }else{
+                    } else {
                     %>
                     <td>
                         <table>
@@ -77,22 +76,9 @@
                     <%
                         }
                     %>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>
-                                    <form action="DeleteActivity" method="post">
-                                        Write the name: <input type ="text" name="daname"><br>
-                                        <input type="submit" name="button1" value="Delete Activity" />
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
                 </tr>
 
                 <%
-
                     }
                 %>
             </table>

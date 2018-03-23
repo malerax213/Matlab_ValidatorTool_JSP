@@ -82,7 +82,7 @@
                             <tr>
                                 <td>
                                     <form action="DeleteActivity" method="post">
-                                        Re-enter the name: <input type ="text" name="daname"><br>
+                                        Write the name: <input type ="text" name="daname"><br>
                                         <input type="submit" name="button1" value="Delete Activity" />
                                     </form>
                                 </td>

@@ -8,8 +8,12 @@
     </head>
     <body>
         <%
-            // IMPORTANT: Add admin conditions
-%>
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <h1>Tests page</h1>
         <p>How to do tests:</p>
         <p>Step 1: Enter the name of the activity</p>
@@ -17,7 +21,7 @@
             <tr>
                 <td>
                     <form action="SelectActivity" method="post">
-                        Re-enter the name: <input type ="text" name="saname"><br>
+                        Enter the name: <input type ="text" name="saname"><br>
                         <input type="submit" name="button1" value="Select Activity" />
                     </form>
                 </td>

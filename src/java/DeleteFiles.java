@@ -28,7 +28,7 @@ public class DeleteFiles extends HttpServlet {
         } else {
             request.setAttribute("message", "Nothing to delete!.");
         }
-        request.getRequestDispatcher("/resultAdmin.jsp").forward(request, response);
+        request.getRequestDispatcher("/result.jsp").forward(request, response);
     }
 
     public boolean cleanDirectory(File dir) {

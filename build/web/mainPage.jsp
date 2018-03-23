@@ -15,20 +15,42 @@
     </head>
     <body>
         <%
-            response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
-            
-            if(session.getAttribute("username")==null){
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+            if (session.getAttribute("username") == null) {
                 response.sendRedirect("login.jsp");
             }
         %>
-        <h1>Matlab Validator Tool</h1>
-        <p>Hi, <%= session.getAttribute( "username" ) %>!</p>
-        <p>How to use this validator: </p>
-        <p>Step 1: Upload the code pressing the "Upload code" button from the "Code" table </p>
-        <p>
+        <h1>Validations page</h1>
+        <p>How to do tests:</p>
+        <p>Step 0: You can see the available activities</p>
         <table border="1">
             <tr>
-                <td align="center"><b>Code</b></td>
+                <td align="center"><b>Activities</b></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form name="myForm" action="activitiesList.jsp" method="GET">
+                        <input type="submit" value="See activities" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <p>Step 1: Enter the name of the activity you want to validate</p>
+        <table>
+            <tr>
+                <td>
+                    <form action="SelectActivity" method="post">
+                        Enter the name: <input type ="text" name="saname"><br>
+                        <input type="submit" name="button1" value="Select Activity" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <p>Step 2: Sumbit your solution</p>
+        <table border="1">
+            <tr>
+                <td align="center"><b>Solution</b></td>
             </tr>
             <tr>
                 <td align="center">
@@ -38,41 +60,35 @@
                 </td>
             </tr>
         </table>
-    </p>
-    
-    <p>Step 2: Upload the solution file pressing the "Upload solution" button from the "Solution" table </p>
-    <p>
-    <table border="1">
-        <tr>
-            <td align="center"><b>Solution</b></td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form name="myForm" action="uploadPage2.jsp" method="POST">
-                    <input type="submit" value="Upload solution" />
-                </form>
-            </td>
-        </tr>
-    </table>
-</p>
-
-<p>Step 3: Press the "Validate" button from the "Tool" table in order to check if the code passes the tests</p>
-<p>
-<table border="1">
-    <tr>
-        <td align="center"><b>Tool</b></td>
-    </tr>
-    <tr>
-        <td align="center">
-            <form action="${pageContext.request.contextPath}/myServlet" method="post">
-                <input type="submit" name="button1" value="Validate" />
-            </form>  
-        </td>
-    </tr>
-</table>
-</p>
-<form method="link" action="Logout">
-    <input type="submit" value="Logout"/>
-</form>
-</body>
+        <p>Step 3: Press Validate</p>
+        <table border="1">
+            <tr>
+                <td align="center"><b>Tool</b></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form action="${pageContext.request.contextPath}/myServlet" method="post">
+                        <input type="submit" name="button1" value="Validate" />
+                    </form>  
+                </td>
+            </tr>
+        </table>
+        <p>Extra 1: Delete all the code uploaded</p>
+        <table border="1">
+            <tr>
+                <td align="center"><b>Delete</b></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form action="deleteFiles" method="post">
+                        <input type="submit" name="button1" value="Delete test files" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <p></p>
+        <form method="link" action="Logout">
+            <input type="submit" value="Logout"/>
+        </form>
+    </body>
 </html>
