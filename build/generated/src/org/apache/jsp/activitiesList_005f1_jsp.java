@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class activitiesList_005f1_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -61,6 +61,11 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <h1>Activities List</h1>\n");
+      out.write("        <p>Create an activity:</p>\n");
+      out.write("        <form name=\"myForm\" action=\"createActivity.jsp\" method=\"GET\">\n");
+      out.write("            <input type=\"submit\" value=\"Create\" />\n");
+      out.write("        </form>\n");
+      out.write("        <p></p>\n");
       out.write("        <form method=\"post\">\n");
       out.write("\n");
       out.write("            <table border=\"1\" WIDTH=\"50%\">\n");
@@ -77,7 +82,7 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
                         String url = "jdbc:mysql://localhost:3306/navin";
                         String username = "root";
                         String password = "admin";
-                        String query = "select * from activity WHERE course = 4";
+                        String query = "select * from activity WHERE course = 1";
                         Connection conn = DriverManager.getConnection(url, username, password);
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
@@ -107,7 +112,7 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                    ");
 
                         Blob b = rs.getBlob("solution");
-                        if(!rs.wasNull()){
+                        if (!rs.wasNull()) {
                     
       out.write("\n");
       out.write("                    <td>\n");
@@ -119,7 +124,7 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                    </td>\n");
       out.write("                    ");
 
-                        }else{
+                    } else {
                     
       out.write("\n");
       out.write("                    <td>\n");
@@ -149,7 +154,6 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                </tr>\n");
       out.write("\n");
       out.write("                ");
-
 
                     }
                 

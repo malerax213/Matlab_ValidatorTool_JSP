@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -77,7 +77,7 @@ public final class activitiesList_jsp extends org.apache.jasper.runtime.HttpJspB
                         String url = "jdbc:mysql://localhost:3306/navin";
                         String username = "root";
                         String password = "admin";
-                        String query = "select * from activity WHERE course = 4";
+                        String query = "select * from activity WHERE course = 3";
                         Connection conn = DriverManager.getConnection(url, username, password);
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
