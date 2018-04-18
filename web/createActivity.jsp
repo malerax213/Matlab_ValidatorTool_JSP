@@ -18,8 +18,11 @@
         <h1>Create activity</h1>
             <form method="post" action="Activity" enctype="multipart/form-data">
                 Enter the name of the activity : <input type ="text" name="aname"><br>
-                Enter its course : <input type="password" name="acourse"><br>
-                Upload solution : <input type="file" name="file" size="50"/>
+                Enter its course : <input type="text" name="acourse"><br>
+                <p></p>
+                Upload solution : <input type="file" name="file1" size="50"/>
+                <p></p>
+                Upload script : <input type="file" name="file2" size="50"/>
                 <p></p>
                 <input type="submit" name="button1" value="Sumbit" />     
             </form>

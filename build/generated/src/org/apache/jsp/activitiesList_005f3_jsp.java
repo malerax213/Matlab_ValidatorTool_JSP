@@ -61,14 +61,19 @@ public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.Ht
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <h1>Activities List</h1>\n");
+      out.write("        <p>Create an activity:</p>\n");
+      out.write("        <form name=\"myForm\" action=\"createActivity.jsp\" method=\"GET\">\n");
+      out.write("            <input type=\"submit\" value=\"Create\" />\n");
+      out.write("        </form>\n");
+      out.write("        <p></p>\n");
       out.write("        <form method=\"post\">\n");
       out.write("\n");
       out.write("            <table border=\"1\" WIDTH=\"50%\">\n");
       out.write("                <tr>\n");
       out.write("                    <td>Activity name</td>\n");
       out.write("                    <td>Course</td>\n");
-      out.write("                    <td>Solution uploaded</td>\n");
       out.write("                    <td>Delete Activity</td>\n");
+      out.write("                    <td>Test Activity</td>\n");
       out.write("                </tr>\n");
       out.write("                ");
 
@@ -81,8 +86,9 @@ public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.Ht
                         Connection conn = DriverManager.getConnection(url, username, password);
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
+                        int i = 0;
                         while (rs.next()) {
-
+                            i++;
                 
       out.write("\n");
       out.write("                <tr>\n");
@@ -107,7 +113,7 @@ public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    ");
 
                         Blob b = rs.getBlob("solution");
-                        if(!rs.wasNull()){
+                        if (!rs.wasNull()) {
                     
       out.write("\n");
       out.write("                    <td>\n");
@@ -119,7 +125,7 @@ public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    </td>\n");
       out.write("                    ");
 
-                        }else{
+                    } else {
                     
       out.write("\n");
       out.write("                    <td>\n");
@@ -139,8 +145,25 @@ public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.Ht
       out.write("                            <tr>\n");
       out.write("                                <td>\n");
       out.write("                                    <form action=\"DeleteActivity\" method=\"post\">\n");
-      out.write("                                        Write the name: <input type =\"text\" name=\"daname\"><br>\n");
-      out.write("                                        <input type=\"submit\" name=\"button1\" value=\"Delete Activity\" />\n");
+      out.write("                                        <input type=\"hidden\" name=\"daname\" value=\"");
+      out.print(rs.getString("name"));
+      out.write("\" />\n");
+      out.write("                                        <input type=\"hidden\" name=\"course\" value=\"3\" />\n");
+      out.write("                                        <input type=\"submit\" name=\"button3\" value=\"Delete Activity\" />\n");
+      out.write("                                    </form>\n");
+      out.write("                                </td>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </table>\n");
+      out.write("                    </td>\n");
+      out.write("                    <td>\n");
+      out.write("                        <table>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <td>\n");
+      out.write("                                    <form action=\"SelectActivity\" method=\"post\">\n");
+      out.write("                                        <input type=\"hidden\" name=\"saname\" value=\"");
+      out.print(rs.getString("name"));
+      out.write("\" />\n");
+      out.write("                                        <input type=\"submit\" name=\"button5\" value=\"Test Activity\" />\n");
       out.write("                                    </form>\n");
       out.write("                                </td>\n");
       out.write("                            </tr>\n");
@@ -149,7 +172,6 @@ public final class activitiesList_005f3_jsp extends org.apache.jasper.runtime.Ht
       out.write("                </tr>\n");
       out.write("\n");
       out.write("                ");
-
 
                     }
                 

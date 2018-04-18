@@ -29,14 +29,17 @@ public class Activity extends HttpServlet {
             throws ServletException, IOException {
         String aname = request.getParameter("aname");
         String acourse = request.getParameter("acourse");
-        InputStream inputStream = null;
+        InputStream inputStream1 = null;
+        InputStream inputStream2 = null;
 
-        Part file = request.getPart("file");
-        if (file != null) {
+        Part file1 = request.getPart("file1");
+        Part file2 = request.getPart("file2");
+        if (file2 != null && file2 != null) {
             // obtains input stream of the upload file
-            inputStream = file.getInputStream();
+            inputStream1 = file1.getInputStream();
+            inputStream2 = file2.getInputStream();
         }
-        if (dao.sumbit(aname, acourse, inputStream)) {
+        if (dao.sumbit(aname, acourse, inputStream1, inputStream2)) {
             request.setAttribute("message", "Activity uploaded.");
         } else {
             request.setAttribute("message", "It failed!.");

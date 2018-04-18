@@ -27,11 +27,12 @@
                 </tr>
                 <%
                     try {
+                        String course = request.getParameter("course");
                         Class.forName("com.mysql.jdbc.Driver");
                         String url = "jdbc:mysql://localhost:3306/navin";
                         String username = "root";
                         String password = "admin";
-                        String query = "select * from activity";
+                        String query = "select * from activity WHERE course = '"+course+"';";
                         Connection conn = DriverManager.getConnection(url, username, password);
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(query);

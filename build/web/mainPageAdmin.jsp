@@ -18,9 +18,9 @@
             //if (session.getAttribute("username") == null) {
             //response.sendRedirect("login.jsp");
             //}
-            //if (!session.getAttribute("username").equals("1")) { // IMPORTANT: CHANGE 1 TO ADMIN
-            //response.sendRedirect("mainPage.jsp");
-            //}
+            if (!session.getAttribute("username").equals("1")) { // IMPORTANT: CHANGE 1 TO ADMIN
+                response.sendRedirect("mainPage.jsp");
+            }
 %>
         <h1>Matlab Validator Tool</h1>
         <p>Hi, <%= session.getAttribute("username")%>!</p>

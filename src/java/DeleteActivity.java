@@ -30,7 +30,8 @@ public class DeleteActivity extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String daname = request.getParameter("daname");
-        if (dao.sumbit(daname)) {
+        String course = request.getParameter("course");
+        if (dao.sumbit(daname, course)) {
             request.setAttribute("message", "Activity deleted.");
         } else {
             request.setAttribute("message", "It failed!.");

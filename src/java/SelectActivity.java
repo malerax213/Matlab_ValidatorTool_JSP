@@ -36,14 +36,12 @@ public class SelectActivity extends HttpServlet {
         ServletContext context = getServletContext();
         try {
             if (dao.sumbit(saname, request, response, context)) {
-                request.setAttribute("message", "Activity selected.");
-            } else {
-                request.setAttribute("message", "It failed!.");
+                response.sendRedirect("adminTests.jsp");
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SelectActivity.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("/result.jsp").forward(request, response);
+        
     }
 
 }

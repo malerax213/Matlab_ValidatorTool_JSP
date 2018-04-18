@@ -28,8 +28,8 @@
                 <tr>
                     <td>Activity name</td>
                     <td>Course</td>
-                    <td>Solution uploaded</td>
                     <td>Delete Activity</td>
+                    <td>Test Activity</td>
                 </tr>
                 <%
                     try {
@@ -41,8 +41,9 @@
                         Connection conn = DriverManager.getConnection(url, username, password);
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
+                        int i = 0;
                         while (rs.next()) {
-
+                            i++;
                 %>
                 <tr>
                     <td>
@@ -88,8 +89,21 @@
                             <tr>
                                 <td>
                                     <form action="DeleteActivity" method="post">
-                                        Write the name: <input type ="text" name="daname"><br>
-                                        <input type="submit" name="button1" value="Delete Activity" />
+                                        <input type="hidden" name="daname" value="<%=rs.getString("name")%>" />
+                                        <input type="hidden" name="course" value="3" />
+                                        <input type="submit" name="button3" value="Delete Activity" />
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <form action="SelectActivity" method="post">
+                                        <input type="hidden" name="saname" value="<%=rs.getString("name")%>" />
+                                        <input type="submit" name="button5" value="Test Activity" />
                                     </form>
                                 </td>
                             </tr>
