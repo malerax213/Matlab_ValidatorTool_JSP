@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class uploadPage1_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class uploadFolder_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -51,25 +51,12 @@ public final class uploadPage1_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Upload page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <form action=\"uploadServlet\" method=\"post\" enctype=\"multipart/form-data\" name=\"form1\" id=\"form1\">\n");
-      out.write("            <center>\n");
-      out.write("                <table border=\"1\">\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td align=\"center\"><b>Multiple file upload</b></td>\n");
-      out.write("                    </tr>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td>\n");
-      out.write("                            Specify file : <input name=\"file\" type=\"file\" id=\"file\" multiple>\n");
-      out.write("                        </td>\n");
-      out.write("                    </tr>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <td align=\"center\">\n");
-      out.write("                            <input type=\"submit\" name=\"Submit\" value=\"Submit Files\">\n");
-      out.write("                        </td>\n");
-      out.write("                    </tr>\n");
-      out.write("                </table>\n");
-      out.write("            </center>\n");
-      out.write("        </form>\n");
+      out.write("        <h1>Select Folder</h1>\n");
+      out.write("        <form method=\"post\" action=\"FolderServlet\" enctype=\"multipart/form-data\">\n");
+      out.write("                Enter the path of the main folder: <input type =\"text\" name=\"path\"><br>\n");
+      out.write("                <p></p>\n");
+      out.write("                <input type=\"submit\" name=\"button1\" value=\"Sumbit\" />     \n");
+      out.write("            </form>\n");
       out.write("       <p></p>\n");
       out.write("        <button type=\"button\" name=\"back\" onclick=\"history.back()\">Go back</button>\n");
       out.write("    </body>\n");

@@ -29,7 +29,8 @@
                     <td>Activity name</td>
                     <td>Course</td>
                     <td>Delete Activity</td>
-                    <td>Test Activity</td>
+                    <td>Single activity test</td>
+                    <td>Multiple activity tests</td>
                 </tr>
                 <%
                     try {
@@ -79,6 +80,20 @@
                                 <td>
                                     <form action="SelectActivity" method="post">
                                         <input type="hidden" name="saname" value="<%=rs.getString("name")%>" />
+                                        <input type="hidden" name="type" value="0" />
+                                        <input type="submit" name="button5" value="Test Activity" />
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <form action="SelectActivity" method="post">
+                                        <input type="hidden" name="saname" value="<%=rs.getString("name")%>" />
+                                        <input type="hidden" name="type" value="1" />
                                         <input type="submit" name="button5" value="Test Activity" />
                                     </form>
                                 </td>

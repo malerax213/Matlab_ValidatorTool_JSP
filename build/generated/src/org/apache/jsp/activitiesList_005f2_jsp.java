@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public final class activitiesList_005f1_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class activitiesList_005f2_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -82,7 +82,7 @@ public final class activitiesList_005f1_jsp extends org.apache.jasper.runtime.Ht
                         String url = "jdbc:mysql://localhost:3306/navin";
                         String username = "root";
                         String password = "admin";
-                        String query = "select * from activity WHERE course = 1";
+                        String query = "select * from activity WHERE course = 2";
                         Connection conn = DriverManager.getConnection(url, username, password);
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
@@ -118,8 +118,8 @@ public final class activitiesList_005f1_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                        <input type=\"hidden\" name=\"daname\" value=\"");
       out.print(rs.getString("name"));
       out.write("\" />\n");
-      out.write("                                        <input type=\"hidden\" name=\"course\" value=\"1\" />\n");
-      out.write("                                        <input type=\"submit\" name=\"button1\" value=\"Delete Activity\" />\n");
+      out.write("                                        <input type=\"hidden\" name=\"course\" value=\"2\" />\n");
+      out.write("                                        <input type=\"submit\" name=\"button2\" value=\"Delete Activity\" />\n");
       out.write("                                    </form>\n");
       out.write("                                </td>\n");
       out.write("                            </tr>\n");

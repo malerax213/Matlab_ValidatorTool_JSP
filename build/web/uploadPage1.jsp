@@ -17,7 +17,7 @@
             <center>
                 <table border="1">
                     <tr>
-                        <td align="center"><b>Multiple file upload</b></td>
+                        <td align="center"><b>File upload</b></td>
                     </tr>
                     <tr>
                         <td>

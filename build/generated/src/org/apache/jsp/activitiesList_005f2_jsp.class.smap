@@ -1,10 +1,10 @@
 SMAP
-activitiesList_005f1_jsp.java
+activitiesList_005f2_jsp.java
 JSP
 *S JSP
 *F
-+ 0 activitiesList_1.jsp
-activitiesList_1.jsp
++ 0 activitiesList_2.jsp
+activitiesList_2.jsp
 *L
 5,30:49
 35,13:80

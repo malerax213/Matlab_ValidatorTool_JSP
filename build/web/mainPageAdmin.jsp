@@ -24,7 +24,7 @@
 %>
         <h1>Matlab Validator Tool</h1>
         <p>Hi, <%= session.getAttribute("username")%>!</p>
-        <p>Here you'll be able to select the course you want:</p>
+        <p>Here you'll be able to select the course you want to handle:</p>
         <table border="1">
             <tr>
                 <td align="center"><b>1</b></td>
@@ -81,19 +81,6 @@
         </table>
 
         <p></p>
-        <p>Do tests:</p>
-        <table border="1">
-            <tr>
-                <td align="center"><b>Activities</b></td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <form name="myForm" action="adminTests.jsp" method="GET">
-                        <input type="submit" value="Go to tests page" />
-                    </form>
-                </td>
-            </tr>
-        </table>
         <p></p>
         <form method="link" action="Logout">
             <input type="submit" value="Logout"/>

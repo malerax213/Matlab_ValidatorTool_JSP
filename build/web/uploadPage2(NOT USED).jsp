@@ -13,11 +13,11 @@
         <title>Upload page</title>
     </head>
     <body>
-        <form action="uploadServlet" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <form action="uploadServlet2" method="post" enctype="multipart/form-data" name="form1" id="form1">
             <center>
                 <table border="1">
                     <tr>
-                        <td align="center"><b>File upload</b></td>
+                        <td align="center"><b>Multiple file upload</b></td>
                     </tr>
                     <tr>
                         <td>
@@ -32,7 +32,7 @@
                 </table>
             </center>
         </form>
-       <p></p>
+        <p></p>
         <button type="button" name="back" onclick="history.back()">Go back</button>
     </body>
 </html>
