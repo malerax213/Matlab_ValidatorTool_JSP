@@ -29,6 +29,10 @@
                 </td>
             </tr>
         </table>
+        <p>Note: You can delete the uploaded files by pressing delete:</p>
+        <form name="myForm" action="deleteFiles" method="POST">
+            <input type="submit" value="Delete" />
+        </form>
         <p>Step 2: Press Validate</p>
         <table border="1">
             <tr>
@@ -36,7 +40,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <form action="${pageContext.request.contextPath}/myServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/MultipleValidations" method="post">
                         <input type="submit" name="button1" value="Validate" />
                     </form>  
                 </td>
