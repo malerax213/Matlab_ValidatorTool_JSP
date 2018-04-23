@@ -20,6 +20,10 @@
             <p></p>
             Upload script : <input type="file" name="file2" size="50"/>
             <p></p>
+            Upload data : <input type="file" name="file3" size="50"/>
+            <p></p>
+            Write name of the file data : <input type="text" name="fname" size="50"/>
+            <p></p>
             <input type="submit" name="button1" value="Sumbit" />     
         </form>
         <p></p>
