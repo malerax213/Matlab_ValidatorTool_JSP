@@ -60,7 +60,7 @@ public class uploadServlet2 extends HttpServlet {
                 List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
-                        File dir = new File(System.getProperty("user.dir")+"/solFile");
+                        File dir = new File(System.getProperty("user.dir")+"/solFile/selectedFile");
                         dir.mkdir();
                         String name = new File(item.getName()).getName();
                         item.write(new File(UPLOAD_DIRECTORY + File.separator + name));

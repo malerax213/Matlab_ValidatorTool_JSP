@@ -72,7 +72,7 @@ public class Validator {
                         comparisonFileName = file.toString();
 
                         if (!usedAsBaseFile.containsKey(comparisonFileName)) {
-                            System.out.println("Comparing " + f.getName()
+                            System.out.println("Comparing the activity file " + f.getName()
                                     + " with " + file.getName());
                             getScore(comparisonFileName,
                                     baseFileName, numTuples);

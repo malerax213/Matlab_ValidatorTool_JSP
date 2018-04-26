@@ -33,15 +33,22 @@ public class SelectActivity extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String saname = request.getParameter("saname");
+        String type = request.getParameter("type");
         ServletContext context = getServletContext();
         try {
-            if (dao.sumbit(saname, request, response, context)) {
-                response.sendRedirect("adminTests.jsp");
+            if (type.equals("0")) {
+                if (dao.sumbit(saname, request, response, context)) {
+                    response.sendRedirect("adminTests.jsp");
+                }
+            } else {
+                if (dao.sumbit(saname, request, response, context)) {
+                    response.sendRedirect("adminMultipleTests.jsp");
+                }
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SelectActivity.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
 }

@@ -24,7 +24,7 @@ public class SelectActivityDAO {
 
     public boolean sumbit(String saname, HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ClassNotFoundException, IOException {
         try {
-            File dir = new File(System.getProperty("user.dir") + "/solFile/");
+            File dir = new File(System.getProperty("user.dir") + "/solFile/selectedFile");
             cleanDirectory(dir);
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection(url, username, password);
@@ -34,17 +34,43 @@ public class SelectActivityDAO {
             if (result.next()) {
                 Blob blob = result.getBlob("solution");
                 InputStream inputStream = blob.getBinaryStream();
-                OutputStream outputStream = new FileOutputStream(System.getProperty("user.dir") + "/solFile/" + saname);
-
+                File dir2 = new File(System.getProperty("user.dir") + "/solFile/sol/");
+                new File(System.getProperty("user.dir") + "/solFile/sol/").mkdirs();
+                cleanDirectory(dir2);
+                OutputStream outputStream = new FileOutputStream(System.getProperty("user.dir") + "/solFile/sol/" + saname + "_sol.txt");
                 int bytesRead = -1;
                 byte[] buffer = new byte[BUFFER_SIZE];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     outputStream.write(buffer, 0, bytesRead);
                 }
-
                 inputStream.close();
                 outputStream.close();
-                System.out.println("File saved:" + System.getProperty("user.dir") + "/solFile/" + saname);
+                System.out.println("File saved: " + System.getProperty("user.dir") + "/solFile/sol/" + saname + "_sol.txt");
+
+                Blob blob2 = result.getBlob("script");
+                InputStream inputStream2 = blob2.getBinaryStream();
+                OutputStream outputStream2 = new FileOutputStream(System.getProperty("user.dir") + "/solFile/selectedFile/" + "aa_" + saname + "_wscript.m");
+                int bytesRead2 = -1;
+                byte[] buffer2 = new byte[BUFFER_SIZE];
+                while ((bytesRead2 = inputStream2.read(buffer2)) != -1) {
+                    outputStream2.write(buffer2, 0, bytesRead2);
+                }
+                inputStream2.close();
+                outputStream2.close();
+                System.out.println("File saved: " + System.getProperty("user.dir") + "/solFile/selectedFile/" + "aa_" + saname + "_wscript.m");
+
+                Blob blob3 = result.getBlob("data");
+                String fileName = result.getString("fname");
+                InputStream inputStream3 = blob3.getBinaryStream();
+                OutputStream outputStream3 = new FileOutputStream(System.getProperty("user.dir") + "/solFile/selectedFile/" + fileName);
+                int bytesRead3 = -1;
+                byte[] buffer3 = new byte[BUFFER_SIZE];
+                while ((bytesRead3 = inputStream3.read(buffer3)) != -1) {
+                    outputStream3.write(buffer3, 0, bytesRead3);
+                }
+                inputStream3.close();
+                outputStream3.close();
+                System.out.println("File saved: " + System.getProperty("user.dir") + "/solFile/selectedFile/" + fileName);
                 return true;
             }
         } catch (SQLException e) {
