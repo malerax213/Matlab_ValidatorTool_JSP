@@ -20,7 +20,7 @@
     <body>
         <p>Output:</p>
         <%
-            File txtFilePath = new File(System.getProperty("user.dir")+"/solFile/wlog.txt");
+            File txtFilePath = new File(System.getProperty("user.dir") + "/solFile/wlog.txt");
             BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -28,6 +28,12 @@
                 out.println("<br/>");
             }
         %>
+        <p>PDF file generated at:
+        <%out.println(System.getProperty("user.dir") + "/solFile/finalDocument.pdf");%></p>
+        <p></p>
+        <object data="${pageContext.request.contextPath}/Test.pdf" 
+        type="application/pdf" width="1000" height="800">
+        <a href="${pageContext.request.contextPath}/Test.pdf">Download file.pdf</a>
         <p></p>
         <button type="button" name="back" onclick="history.back()">Go back</button>
     </body>

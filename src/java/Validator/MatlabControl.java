@@ -1,16 +1,23 @@
 package Validator;
 // This file has been created in order to learn how to control matlab from the command line
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 
 public class MatlabControl {
 
-    public MatlabControl(){
-        
+    public MatlabControl() {
+
     }
-    
+
     public static void main(String[] args) {
-        String output = executeCommand("matlab -nodesktop -nosplash -r \"run('D:\\Carrera\\TFG\\creaTaulaTH(2,3,4)');\" -logfile D:\\Carrera\\TFG\\logfile.txt");
+
+        //String output = executeCommand("/Applications/MATLAB_R2017a.app/bin/matlab -nodesktop -nosplash -r \"run('/Users/alex/Documents/TFG/Tests/Tests/2/test_plab11617_tarda_test2');\" -logfile /Users/alex/Documents/TFG/Tests/wmlog.txt");
+        String output;
+        output = executeCommand("/Applications/MATLAB_R2017a.app/bin/matlab -nodesktop -nosplash -r "
+                + "run('/Applications/NetBeans/glassfish-4.1.1/glassfish/domains/domain1/config/solFile/selectedFile/aa_TestAct_wscript'); "
+                + "-logfile /Users/alex/Documents/TFG/Tests/Test_Folders/Sumalla Rosell, Roger(rsr3)/logFile0.txt");
 
         System.out.println(output);
 
@@ -23,14 +30,9 @@ public class MatlabControl {
         Process p;
         try {
             p = Runtime.getRuntime().exec(command);
-            p.waitFor();
-            BufferedReader reader
-                    = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            Thread.sleep(40000);
+            p.destroyForcibly();
 
-            String line = "";
-            while ((line = reader.readLine()) != null) {
-                output.append(line + "\n");
-            }
 
         } catch (Exception e) {
             e.printStackTrace();

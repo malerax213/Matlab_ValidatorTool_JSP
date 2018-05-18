@@ -1,13 +1,14 @@
 package Validator;
 
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Validator {
 
@@ -85,12 +86,40 @@ public class Validator {
         }
     }
 
-    public static void compareFilesWithModel(File[] files, int numTuples, 
+    public static double comparator(String s1, String s2) throws FileNotFoundException {
+        Scanner sca = new Scanner(new File(s1));
+        Scanner scb = new Scanner(new File(s2));
+
+        StringBuilder sba = new StringBuilder();
+        StringBuilder sbb = new StringBuilder();
+        while (sca.hasNext()) {
+            sba.append(sca.next());
+        }
+        while (scb.hasNext()) {
+            sbb.append(scb.next());
+        }
+        String a = sba.toString();
+        String b = sbb.toString();
+        int maxlen = Math.max(a.length(), b.length());
+        int matches = 0;
+        for (int i = 0; i < maxlen; i++) {
+            if (a.length() <= i || b.length() <= i) {
+                break;
+            }
+            if (a.charAt(i) == b.charAt(i)) {
+                matches++;
+            }
+        }
+        return (((double) matches / (double) maxlen) * 100.0);
+    }
+
+    public static void compareFilesWithModel(File[] files, int numTuples,
             File model) throws IOException {
         String comparisonFileName;
 
-        PrintWriter log = new PrintWriter(System.getProperty("user.dir")+"/solFile/wlog.txt", "UTF-8");
-        
+        PrintWriter log = new PrintWriter(System.getProperty("user.dir") + 
+                "/solFile/wlog.txt", "UTF-8");
+
         for (File file : files) {
             if (file.canRead() && file.isFile()) {
                 log.println("Comparing " + model.getName()
@@ -98,25 +127,25 @@ public class Validator {
             }
             comparisonFileName = file.toString();
             log.println("Percentage of match: "
-                    + getMatch(comparisonFileName, model.toString(),
-                            numTuples) + "%");
+                    + getMatch(comparisonFileName, model.toString(), numTuples)
+                    + "%");
         }
         log.close();
     }
-    
+
     // TODO: Check the style guide lines and return true or false depending 
     // on the format
-    public static double fileStyle(File f){
-        
+    public static double fileStyle(File f) {
+
         return 0.0;
     }
-    
+
     public static void styleLines(File[] files) {
-        
+
         for (File file : files) {
-            System.out.println("Checking if the file "+file.getName()+
-                    " passes the style tests");
-            System.out.println("Got a "+fileStyle(file)+"% of correctness");
+            System.out.println("Checking if the file " + file.getName()
+                    + " passes the style tests");
+            System.out.println("Got a " + fileStyle(file) + "% of correctness");
         }
     }
 
@@ -136,7 +165,7 @@ public class Validator {
                 File model = new File(String.valueOf(args[2]));
                 compareFilesWithModel(files, numTuples, model);
 
-            // Style lines: Checks if the files are passing the style tests
+                // Style lines: Checks if the files are passing the style tests
             } else if ("2".equals(String.valueOf(args[0]))) {
                 if (args.length != 2) {
                     System.err.println("USAGE: <function to be executed> "
@@ -144,9 +173,9 @@ public class Validator {
                 }
                 File[] files = new File(String.valueOf(args[1])).listFiles();
                 styleLines(files);
-                
-            // Plagiarism detector: Checks if there's any sign of Plagiarism 
-            // giving the file directory    
+
+                // Plagiarism detector: Checks if there's any sign of Plagiarism 
+                // giving the file directory    
             } else if ("3".equals(String.valueOf(args[0]))) {
                 numTuples = 3;
                 if (args.length != 2) {

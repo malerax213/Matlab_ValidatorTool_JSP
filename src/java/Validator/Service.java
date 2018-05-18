@@ -17,6 +17,9 @@ public class Service {
                 }
             }
         }
+        if(2*nTuples1.size()<nTuples2.size()){
+            return count/3;
+        }
         return count;
     }
 

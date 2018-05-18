@@ -25,6 +25,7 @@ public class SelectActivityDAO {
     public boolean sumbit(String saname, HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ClassNotFoundException, IOException {
         try {
             File dir = new File(System.getProperty("user.dir") + "/solFile/selectedFile");
+            new File(System.getProperty("user.dir") + "/solFile/selectedFile").mkdirs();
             cleanDirectory(dir);
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection(url, username, password);

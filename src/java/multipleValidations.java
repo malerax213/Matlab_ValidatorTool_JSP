@@ -37,28 +37,27 @@ public class multipleValidations extends HttpServlet {
             int number_of_folders = files.length;
             int x;
 
-            for (int i = 0; i < number_of_folders; i++) {
+            for (int i = 1; i < number_of_folders; i++) {
                 String script = "" + uploaded[0];
                 script = script.substring(0, script.length() - 2);
                 ArrayList<File> files_from_directory = new ArrayList();
+                System.out.println("Path: "+files[i].getPath()+" Number of folders: "+number_of_folders+" i: "+i);
                 listf(files[i].getPath(), files_from_directory);
                 System.out.println("La i es: " + i + " i la quantitat d'arxius .m de la carpeta es: " + files_from_directory.size());
                 for (x = 0; x < files_from_directory.size(); x++) {
                     System.out.println("El nom de l'arxiu que es mourà es: " + files_from_directory.get(x).getName());
                     files_from_directory.get(x).renameTo(new File(System.getProperty("user.dir") + "/solFile/selectedFile/" + files_from_directory.get(x).getName()));
                 }
-                File[] path = getPath(System.getProperty("user.dir") + "/solFile/Path.txt");
-                String command = "matlab -nodesktop -nosplash -minimize -r \"run('" + script + "');\" -logfile \"" + path[i].getPath() + "\\logFile" + i + ".txt\"";
+                //File[] path = getPath(System.getProperty("user.dir") + "/solFile/Path.txt");
+                File generalPath = getOnePath(System.getProperty("user.dir") + "/solFile/Path.txt");
+                String command = "/Applications/MATLAB_R2017a.app/bin/matlab -nodesktop -nosplash -r "
+                        + "run('" + script + "'); -logfile " + generalPath.getPath() + "/logFile" + (i-1) + ".txt";
                 System.out.println(command);
-                mc.executeCommand(command);
-                try {
-                    Thread.sleep(9000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(myServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                copyFile(new File(path[i].getPath()+"\\logFile"+i+".txt"), new File(System.getProperty("user.dir") + "/solFile/solutionlogs/"+i+".txt"));
+                MatlabControl.executeCommand(command);
+                copyFile(new File(generalPath.getPath()+"/logFile"+(i-1)+".txt"), new File(System.getProperty("user.dir") + "/solFile/solutionlogs/"+(i-1)+".txt"));
             }
             File[] solutionLogs = new File(System.getProperty("user.dir") + "/solFile/solutionLogs").listFiles();
+            
             Validator.compareFilesWithModel(solutionLogs, 1, solu[0]);
             response.sendRedirect("LogReader.jsp");
             // Not cleaning the directory!!
@@ -71,11 +70,18 @@ public class multipleValidations extends HttpServlet {
 
         request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
     }
-
+    
     public File[] getPath(String path) throws FileNotFoundException, IOException {
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         File[] f = new File(br.readLine()).listFiles();
+        return f;
+    }
+    
+    public File getOnePath(String path) throws FileNotFoundException, IOException {
+        FileReader fr = new FileReader(path);
+        BufferedReader br = new BufferedReader(fr);
+        File f = new File(br.readLine());
         return f;
     }
 

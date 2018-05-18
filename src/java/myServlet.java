@@ -37,20 +37,16 @@ public class myServlet extends HttpServlet {
                 for (int x = 0; x < files.length; x++) {
                     files[x].renameTo(new File(System.getProperty("user.dir") + "/solFile/selectedFile/" + files[x].getName()));
                 }
-                command = "matlab -nodesktop -nosplash -minimize -r \"run('" + script + "');\" -logfile " + System.getProperty("user.dir") + "/solFile/solutionLogs/wmlog.txt";
-            } else {
-                String sol = "" + files[0];
-                sol = sol.substring(0, sol.length() - 2);
-                command = "matlab -nodesktop -nosplash -minimize -r \"run('" + sol + "');\" -logfile " + System.getProperty("user.dir") + "/solFile/solutionLogs/wmlog.txt";
+                command = "/Applications/MATLAB_R2017a.app/bin/matlab -nodesktop -nosplash -r run('" + script + "'); -logfile " + System.getProperty("user.dir") + "/solFile/solutionLogs/wmlog.txt";
+                MatlabControl.executeCommand(command);
             }
-            mc.executeCommand(command);
-            try {
-                Thread.sleep(7500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(myServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
             File[] solutionLogs = new File(System.getProperty("user.dir") + "/solFile/solutionLogs").listFiles();
             Validator.compareFilesWithModel(solutionLogs, 1, solu[0]);
+            FileMerge.merge(new File(System.getProperty("user.dir") + "/solFile/wlog.txt"), 
+                    new File(System.getProperty("user.dir")+"/solFile/solutionLogs/wmlog.txt"), 
+                    new File(System.getProperty("user.dir")+"/solFile/finalDocument.txt"));
+            FileMerge.convertTextfileToPDF(new File(System.getProperty("user.dir")+"/solFile/finalDocument.txt"));
             response.sendRedirect("LogReader.jsp");
             return;
         } else {
