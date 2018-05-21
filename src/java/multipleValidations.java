@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -32,8 +33,26 @@ public class multipleValidations extends HttpServlet {
             File[] files = new File(System.getProperty("user.dir") + "/solDirectory").listFiles();
             new File(System.getProperty("user.dir") + "/solFile/selectedFile/").mkdirs();
             File[] uploaded = new File(System.getProperty("user.dir") + "/solFile/selectedFile/").listFiles();
-            new File(System.getProperty("user.dir") + "/solFile/solutionLogs/").mkdirs();
+            File sL = new File(System.getProperty("user.dir") + "/solFile/solutionLogs");
+            sL.mkdirs();
+            cleanDirectory(sL);
             File[] solu = new File(System.getProperty("user.dir") + "/solFile/sol/").listFiles();
+            File dir3 = new File(System.getProperty("user.dir") + "/solFile/finalDocuments");
+            dir3.mkdir();
+            cleanDirectory(dir3);
+            final File[] logFiles = new File(System.getProperty("user.dir")
+                    + "/solFile").listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(final File dir,
+                        final String name) {
+                    return name.matches("wlog.*\\.txt");
+                }
+            });
+            for (final File fl : logFiles) {
+                if (!fl.delete()) {
+                    System.err.println("Can't remove " + fl.getAbsolutePath());
+                }
+            }
             int number_of_folders = files.length;
             int x;
 
@@ -41,28 +60,71 @@ public class multipleValidations extends HttpServlet {
                 String script = "" + uploaded[0];
                 script = script.substring(0, script.length() - 2);
                 ArrayList<File> files_from_directory = new ArrayList();
-                System.out.println("Path: "+files[i].getPath()+" Number of folders: "+number_of_folders+" i: "+i);
+                System.out.println("Path: " + files[i].getPath() + " Number of folders: " + number_of_folders
+                        + " i: " + i);
                 listf(files[i].getPath(), files_from_directory);
-                System.out.println("La i es: " + i + " i la quantitat d'arxius .m de la carpeta es: " + files_from_directory.size());
+                System.out.println("La i es: " + i + " i la quantitat d'arxius .m de la carpeta es: "
+                        + files_from_directory.size());
                 for (x = 0; x < files_from_directory.size(); x++) {
                     System.out.println("El nom de l'arxiu que es mourà es: " + files_from_directory.get(x).getName());
-                    files_from_directory.get(x).renameTo(new File(System.getProperty("user.dir") + "/solFile/selectedFile/" + files_from_directory.get(x).getName()));
+                    files_from_directory.get(x).renameTo(new File(System.getProperty("user.dir")
+                            + "/solFile/selectedFile/" + files_from_directory.get(x).getName()));
                 }
                 //File[] path = getPath(System.getProperty("user.dir") + "/solFile/Path.txt");
-                File generalPath = getOnePath(System.getProperty("user.dir") + "/solFile/Path.txt");
+                //File generalPath = getOnePath(System.getProperty("user.dir") + "/solFile/Path.txt");
                 String command = "/Applications/MATLAB_R2017a.app/bin/matlab -nodesktop -nosplash -r "
-                        + "run('" + script + "'); -logfile " + generalPath.getPath() + "/logFile" + (i-1) + ".txt";
+                        + "run('" + script + "'); -logfile " + System.getProperty("user.dir")
+                        + "/solFile/solutionLogs/logFile" + (i - 1) + ".txt";
                 System.out.println(command);
                 MatlabControl.executeCommand(command);
-                copyFile(new File(generalPath.getPath()+"/logFile"+(i-1)+".txt"), new File(System.getProperty("user.dir") + "/solFile/solutionlogs/"+(i-1)+".txt"));
+                //copyFile(new File(generalPath.getPath()+"/logFile"+(i-1)+".txt"), new File(System.getProperty("user.dir") + "/solFile/solutionlogs/"+(i-1)+".txt"));
             }
             File[] solutionLogs = new File(System.getProperty("user.dir") + "/solFile/solutionLogs").listFiles();
-            
             Validator.compareFilesWithModel(solutionLogs, 1, solu[0]);
+
+            int v = 1;
+            while (v < number_of_folders) {
+                FileMerge.merge(new File(System.getProperty("user.dir") + "/solFile/wlog" + (v - 1) + ".txt"),
+                        new File(System.getProperty("user.dir") + "/solFile/solutionLogs/logFile"
+                                + (v - 1) + ".txt"),
+                        new File(System.getProperty("user.dir") + "/solFile/finalDocuments/finalDocument"
+                                + (v - 1) + ".txt"));
+                System.out.println("Merging: wlog" + (v - 1) + ".txt with logFile" + (v - 1) + ".txt into: finalDocument"
+                        + (v - 1) + ".txt");
+                v++;
+            }
+            int b = 1;
+            while (b < number_of_folders - 1) {
+                if (b == 1) {
+                    FileMerge.merge(new File(System.getProperty("user.dir") + "/solFile/finalDocuments/finalDocument"
+                            + (b - 1) + ".txt"),
+                            new File(System.getProperty("user.dir") + "/solFile/finalDocuments/finalDocument"
+                                    + (b) + ".txt"),
+                            new File(System.getProperty("user.dir") + "/solFile/finalDocuments/fD"
+                                    + (b - 1) + ".txt"));
+                    System.out.println("Merging: finalDocument" + (b - 1) + ".txt with finalDocument" + (b) + ".txt into: "
+                            + "fD" + (b - 1) + ".txt");
+                    b++;
+                } else {
+                    FileMerge.merge(new File(System.getProperty("user.dir") + "/solFile/finalDocuments/fD"
+                            + (b - 2) + ".txt"),
+                            new File(System.getProperty("user.dir") + "/solFile/finalDocuments/finalDocument"
+                                    + (b) + ".txt"),
+                            new File(System.getProperty("user.dir") + "/solFile/finalDocuments/fD"
+                                    + (b - 1) + ".txt"));
+                    System.out.println("Merging: finalDocument" + (b - 2) + ".txt with finalDocument" + (b) + ".txt into: "
+                            + "fD" + (b - 1) + ".txt");
+                    b++;
+                }
+            }
+            FileMerge.convertTextfileToPDF(new File(System.getProperty("user.dir")
+                    + "/solFile/finalDocuments/fD" + (b - 2) + ".txt"));
+
             response.sendRedirect("LogReader.jsp");
-            // Not cleaning the directory!!
-            File dir = new File(System.getProperty("user.dir") + "/solFile/solutionLogs");
-            cleanDirectory(dir);
+            File dir1 = new File(System.getProperty("user.dir") + "/solFile/solutionLogs");
+            File dir2 = new File(System.getProperty("user.dir") + "/solDirectory");
+            cleanDirectory(dir1);
+            cleanDirectory(dir2);
             return;
         } else {
             // ???
@@ -70,14 +132,14 @@ public class multipleValidations extends HttpServlet {
 
         request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
     }
-    
+
     public File[] getPath(String path) throws FileNotFoundException, IOException {
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         File[] f = new File(br.readLine()).listFiles();
         return f;
     }
-    
+
     public File getOnePath(String path) throws FileNotFoundException, IOException {
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);

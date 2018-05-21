@@ -86,41 +86,14 @@ public class Validator {
         }
     }
 
-    public static double comparator(String s1, String s2) throws FileNotFoundException {
-        Scanner sca = new Scanner(new File(s1));
-        Scanner scb = new Scanner(new File(s2));
-
-        StringBuilder sba = new StringBuilder();
-        StringBuilder sbb = new StringBuilder();
-        while (sca.hasNext()) {
-            sba.append(sca.next());
-        }
-        while (scb.hasNext()) {
-            sbb.append(scb.next());
-        }
-        String a = sba.toString();
-        String b = sbb.toString();
-        int maxlen = Math.max(a.length(), b.length());
-        int matches = 0;
-        for (int i = 0; i < maxlen; i++) {
-            if (a.length() <= i || b.length() <= i) {
-                break;
-            }
-            if (a.charAt(i) == b.charAt(i)) {
-                matches++;
-            }
-        }
-        return (((double) matches / (double) maxlen) * 100.0);
-    }
-
     public static void compareFilesWithModel(File[] files, int numTuples,
             File model) throws IOException {
         String comparisonFileName;
 
-        PrintWriter log = new PrintWriter(System.getProperty("user.dir") + 
-                "/solFile/wlog.txt", "UTF-8");
-
+        int i = 0;
         for (File file : files) {
+            PrintWriter log = new PrintWriter(System.getProperty("user.dir")
+                    + "/solFile/wlog" + i + ".txt", "UTF-8");
             if (file.canRead() && file.isFile()) {
                 log.println("Comparing " + model.getName()
                         + " with " + file.getName());
@@ -129,8 +102,9 @@ public class Validator {
             log.println("Percentage of match: "
                     + getMatch(comparisonFileName, model.toString(), numTuples)
                     + "%");
+            log.close();
+            i++;
         }
-        log.close();
     }
 
     // TODO: Check the style guide lines and return true or false depending 

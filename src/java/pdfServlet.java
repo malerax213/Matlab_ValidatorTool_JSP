@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class pdfServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        File file = new File(System.getProperty("user.dir") + "/solFile/finalDocument.pdf");
+        File file = new File(System.getProperty("user.dir") + "/solFile/finalDocuments/finalDocument.pdf");
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"finalDocument.pdf\"");

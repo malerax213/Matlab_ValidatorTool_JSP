@@ -4,6 +4,7 @@
     Author     : alex
 --%>
 
+<%@page import="java.io.FilenameFilter"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.File"%>
 <%@page import="java.io.InputStreamReader"%>
@@ -20,21 +21,30 @@
     <body>
         <p>Output:</p>
         <%
-            File txtFilePath = new File(System.getProperty("user.dir") + "/solFile/wlog.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                out.println(line);
-                out.println("<br/>");
+            File dir = new File(System.getProperty("user.dir") + "/solFile");
+            File[] found = dir.listFiles(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    return name.startsWith("wlog");
+                }
+            });
+            for (int i = 0; i < found.length; i++) {
+                File txtFilePath = new File(System.getProperty("user.dir") + "/solFile/wlog" + i + ".txt");
+                BufferedReader reader = new BufferedReader(new FileReader(txtFilePath));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    out.println(line);
+                    out.println("<br/>");
+                }
+                out.println("\n");
             }
         %>
         <p>PDF file generated at:
-        <%out.println(System.getProperty("user.dir") + "/solFile/finalDocument.pdf");%></p>
+            <%out.println(System.getProperty("user.dir") + "/solFile/finalDocuments/finalDocument.pdf");%></p>
         <p></p>
         <object data="${pageContext.request.contextPath}/Test.pdf" 
-        type="application/pdf" width="1000" height="800">
-        <a href="${pageContext.request.contextPath}/Test.pdf">Download file.pdf</a>
-        <p></p>
-        <button type="button" name="back" onclick="history.back()">Go back</button>
+                type="application/pdf" width="1000" height="800">
+            <a href="${pageContext.request.contextPath}/Test.pdf">Download file.pdf</a>
+            <p></p>
+            <button type="button" name="back" onclick="history.back()">Go back</button>
     </body>
 </html>

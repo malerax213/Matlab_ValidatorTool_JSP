@@ -11,9 +11,6 @@ public class FileMerge {
 
     public static void merge(File f1, File f2, File f3) throws FileNotFoundException, IOException {
         PrintWriter pw = new PrintWriter(f3.getAbsolutePath());
-        System.out.println(f1.getAbsolutePath());
-        System.out.println(f2.getAbsolutePath());
-        System.out.println(f3.getAbsolutePath());
         BufferedReader br1 = new BufferedReader(new FileReader(f1.getAbsolutePath()));
         BufferedReader br2 = new BufferedReader(new FileReader(f2.getAbsolutePath()));
 
@@ -21,17 +18,21 @@ public class FileMerge {
         String line2 = br2.readLine();
 
         // loop to copy lines
-        while (line1 != null || line2 != null) {
+        while (line1 != null) {
             if (line1 != null) {
                 pw.println(line1);
                 line1 = br1.readLine();
             }
+        }
+        pw.println("\n");
+        while (line2 != null) {
             if (line2 != null) {
                 pw.println(line2);
                 line2 = br2.readLine();
             }
         }
-
+        pw.println("\n");
+        pw.println("________________________________________________________________");
         pw.flush();
 
         // closing resources
