@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tests page</title>
+        <title>Admin tests page</title>
     </head>
     <body>
         <%
@@ -14,35 +14,56 @@
                 response.sendRedirect("login.jsp");
             }
         %>
-        <h1>Tests page</h1>
-        <p>Test Page:</p>
-        <p>Step 1: Sumbit the solution you want to test</p>
+        <h1>Admin tests page</h1>
+        <p></p>
         <table border="1">
             <tr>
-                <td align="center"><b>Code</b></td>
+                <td align="center"><b>Instruction</b></td>
+                <td align="center"><b>Button</b></td>
             </tr>
             <tr>
-                <td align="center">
-                    <form name="myForm" action="uploadPage1.jsp" method="POST">
-                        <input type="submit" value="Upload code" />
-                    </form>
+                <td>
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <p>Step 1: Sumbit the solution you want to test</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <form name="myForm" action="uploadPage1.jsp" method="POST">
+                                    <input type="submit" value="Upload code" />
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+
                 </td>
             </tr>
-        </table>
-        <p>Note: You can delete the uploaded files by pressing delete:</p>
-        <form name="myForm" action="deleteFiles" method="POST">
-            <input type="submit" value="Delete" />
-        </form>
-        <p>Step 2: Press Validate</p>
-        <table border="1">
             <tr>
-                <td align="center"><b>Tool</b></td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <form action="${pageContext.request.contextPath}/myServlet" method="post">
-                        <input type="submit" name="button1" value="Validate" />
-                    </form>  
+                <td>
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <p>Step 2: Press Validate</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td align="center">
+                                <form action="${pageContext.request.contextPath}/myServlet" method="post">
+                                    <input type="submit" name="button1" value="Validate" />
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>

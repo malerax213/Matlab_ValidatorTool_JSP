@@ -1,13 +1,10 @@
 
 import Validator.MatlabControl;
 import Validator.Validator;
-import static Validator.Validator.compareFilesWithModel;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.nio.file.Files;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +17,6 @@ public class myServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
             IOException {
-        // How to improve. If a there are a lot of files uploaded, do a for and execute the command for each file and generate 1 log for each execution
-        // Then compare each log file with the solution of the activity selected
         if (request.getParameter("button1") != null) {
             MatlabControl mc = new MatlabControl();
             File[] files = new File(System.getProperty("user.dir") + "/solDirectory").listFiles();
@@ -32,6 +27,8 @@ public class myServlet extends HttpServlet {
             File[] solu = new File(System.getProperty("user.dir") + "/solFile/sol/").listFiles();
             File dir1 = new File(System.getProperty("user.dir") + "/solFile/finalDocuments");
             dir1.mkdir();
+            File tempLog = new File(System.getProperty("user.dir")+"/solFile/finalLog.txt");
+            tempLog.delete();
             cleanDirectory(dir1);
             cleanDirectory(sL);
             final File[] logFiles = new File(System.getProperty("user.dir")
@@ -47,6 +44,8 @@ public class myServlet extends HttpServlet {
                     System.err.println("Can't remove " + fl.getAbsolutePath());
                 }
             }
+            File tempStore = new File(System.getProperty("user.dir")+"/solFile/selectedFile/.DS_STORE");
+            tempStore.delete();
             String command;
 
             if (uploaded.length > 1) { //If there's a script to execute
@@ -68,6 +67,10 @@ public class myServlet extends HttpServlet {
                     finalDocument);
             FileMerge.convertTextfileToPDF(new File(System.getProperty("user.dir")+"/solFile/finalDocuments/"
                     + "finalDocument.txt"));
+            File finalLog = new File(System.getProperty("user.dir")+"/solFile/wlog0.txt");
+            File newFile = new File(finalLog.getParent(), "finalLog.txt");  
+            Files.move(finalLog.toPath(), newFile.toPath());
+            FileMerge.convertTextfileToPDF(new File(System.getProperty("user.dir")+"/solFile/finalLog.txt"));
             finalDocument.delete();
             File dir2 = new File(System.getProperty("user.dir") + "/solDirectory");
             cleanDirectory(dir2);

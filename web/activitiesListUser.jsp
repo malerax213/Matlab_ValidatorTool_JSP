@@ -17,13 +17,14 @@
     </head>
     <body>
         <h1>Activities List</h1>
-        <form method="post">
+        <p></p>
+        <form method="post" action="SelectActivity">
 
             <table border="1" WIDTH="50%">
                 <tr>
                     <td>Activity name</td>
                     <td>Course</td>
-                    <td>Solution uploaded</td>
+                    <td>Single activity test</td>
                 </tr>
                 <%
                     try {
@@ -53,30 +54,19 @@
                             </tr>
                         </table>
                     </td>
-                    <%
-                        Blob b = rs.getBlob("solution");
-                        if (!rs.wasNull()) {
-                    %>
                     <td>
                         <table>
                             <tr>
-                                <td>Si</td>
+                                <td>
+                                    <form action="SelectActivity" method="post">
+                                        <input type="hidden" name="saname" value="<%=rs.getString("name")%>" />
+                                        <input type="hidden" name="type" value="0" />
+                                        <input type="submit" name="button1" value="Test Activity" />
+                                    </form>
+                                </td>
                             </tr>
                         </table>
                     </td>
-                    <%
-                    } else {
-                    %>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>No</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <%
-                        }
-                    %>
                 </tr>
 
                 <%

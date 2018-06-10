@@ -3,23 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Login.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/Service.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/myServlet.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/FolderServlet.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/MatlabControl.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/index.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/summarizedFile.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/SelectActivityDAO.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/uploadPage1.jsp</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/pdfServlet.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/mainPage.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/Validator.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/result.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/multipleValidations.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/uploadServlet.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/DeleteFiles.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/SelectActivity.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/mainPageAdmin.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/uploadPage2.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/uploadFolder.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/myServlet.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/FolderServlet.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/MatlabControl.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/adminMultipleTests.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/activitiesList_2.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/summarizedPdfServlet.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/uploadPage1.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/createActivity.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/pdfServlet.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/fullFile.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/mainPage.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/uploadServlet.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/activitiesList_1.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/DeleteFiles.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/login.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/FileMerge.java</file>
-            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/uploadPage2.jsp</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/LoginDAO.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/adminTests.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/LogReader.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/NTuple.java</file>
         </group>

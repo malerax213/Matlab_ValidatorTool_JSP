@@ -49,7 +49,9 @@ public class FileMerge {
         try {
             Document pdfDoc = new Document();
 
-            String text_file_name = file.getParent() + "/finalDocument.pdf";
+            String text_file_name = file.getParent() + "/" + file.getName();
+            text_file_name = text_file_name.substring(0, text_file_name.length() - 4);
+            text_file_name = text_file_name + ".pdf";
             PdfWriter writer = PdfWriter.getInstance(pdfDoc, new FileOutputStream(text_file_name));
             pdfDoc.open();
             pdfDoc.setMarginMirroring(true);

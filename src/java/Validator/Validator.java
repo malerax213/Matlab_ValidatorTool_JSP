@@ -86,6 +86,33 @@ public class Validator {
         }
     }
 
+    public static void compareFilesWithModelWithNames(File[] files, int numTuples,
+            File model, String[] names, String[] sum) throws IOException {
+        String comparisonFileName;
+
+        int i = 0;
+        PrintWriter log2 = new PrintWriter(System.getProperty("user.dir")
+                + "/solFile/results.csv", "UTF-8");
+        log2.println("Student ID,Student Name,Percentage of Match");
+        for (File file : files) {
+            PrintWriter log = new PrintWriter(System.getProperty("user.dir")
+                    + "/solFile/wlog" + i + ".txt", "UTF-8");
+
+            if (file.canRead() && file.isFile()) {
+                log.println("The name of the student is: " + names[i]);
+            }
+            comparisonFileName = file.toString();
+            double percentage = getMatch(comparisonFileName, model.toString(), numTuples);
+            log.println("Percentage of match: " + percentage + "%");
+            String temp = names[i].substring(0, names[i].length() - 1);
+            log2.println(sum[i] + ",\"" + temp + "\"," + percentage);
+
+            log.close();
+            i++;
+        }
+        log2.close();
+    }
+
     public static void compareFilesWithModel(File[] files, int numTuples,
             File model) throws IOException {
         String comparisonFileName;
@@ -95,8 +122,6 @@ public class Validator {
             PrintWriter log = new PrintWriter(System.getProperty("user.dir")
                     + "/solFile/wlog" + i + ".txt", "UTF-8");
             if (file.canRead() && file.isFile()) {
-                log.println("Comparing " + model.getName()
-                        + " with " + file.getName());
             }
             comparisonFileName = file.toString();
             log.println("Percentage of match: "
