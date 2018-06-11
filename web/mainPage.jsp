@@ -1,8 +1,3 @@
-<%-- 
-    Document   : mainPage
-    Created on : 01-feb-2018, 9:47:45
-    Author     : alex
---%>
 
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
@@ -29,7 +24,6 @@
             String userUsed = user.toString();
         %>
         <h1>Validations page</h1>
-        <p>How to do tests:</p>
         <p>Handle your assigned activities:</p>
         <table border="1">
             <%

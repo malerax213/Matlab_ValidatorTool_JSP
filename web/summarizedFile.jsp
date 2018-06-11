@@ -1,8 +1,3 @@
-<%-- 
-    Document   : summarizedFile
-    Created on : 09-jun-2018, 9:49:59
-    Author     : alex
---%>
 
 <%@page import="java.io.FilenameFilter"%>
 <%@page import="java.io.File"%>

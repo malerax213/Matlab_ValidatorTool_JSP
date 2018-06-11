@@ -63,7 +63,6 @@ public class multipleValidations extends HttpServlet {
                 ArrayList<File> files_from_directory = new ArrayList();
                 System.out.println("Path: " + files[i].getPath() + " Number of folders: " + number_of_folders
                         + " i: " + i);
-
                 listf(files[i].getPath(), files_from_directory);
 
                 st = new StringTokenizer(files[i].getName(), ", ()");
@@ -72,7 +71,6 @@ public class multipleValidations extends HttpServlet {
                 while (n < 3) {
                     sb.append(st.nextToken());
                     sb.append(" ");
-
                     n++;
                 }
                 String temp = files[i].getName().substring(files[i].getName().length() - 5);

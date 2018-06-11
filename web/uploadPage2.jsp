@@ -1,8 +1,4 @@
-<%-- 
-    Document   : uploadPage1
-    Created on : 05-feb-2018, 10:52:04
-    Author     : alex
---%>
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>

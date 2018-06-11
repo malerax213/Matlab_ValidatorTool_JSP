@@ -1,8 +1,3 @@
-<%-- 
-    Document   : mainPage
-    Created on : 01-feb-2018, 9:47:45
-    Author     : alex
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

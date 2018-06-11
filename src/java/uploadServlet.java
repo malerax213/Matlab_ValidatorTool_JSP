@@ -19,30 +19,10 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet("/uploadServlet")
 public class uploadServlet extends HttpServlet {
 
-    private final String UPLOAD_DIRECTORY = System.getProperty("user.dir")+"/solDirectory";;
+    private final String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/solDirectory";
+
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public uploadServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     * response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doPost(request, response);
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     * response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
@@ -51,13 +31,13 @@ public class uploadServlet extends HttpServlet {
                 List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
-                        File dir = new File(System.getProperty("user.dir")+"/solDirectory");
+                        File dir = new File(System.getProperty("user.dir") + "/solDirectory");
                         dir.mkdir();
                         String name = new File(item.getName()).getName();
                         item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
                     }
                 }
-                request.setAttribute("message", "File uploaded successfully at: "+System.getProperty("user.dir")+"/solDirectory");
+                request.setAttribute("message", "File uploaded successfully at: " + System.getProperty("user.dir") + "/solDirectory");
             } catch (Exception ex) {
                 request.setAttribute("message", "File upload failed due to : " + ex);
             }
