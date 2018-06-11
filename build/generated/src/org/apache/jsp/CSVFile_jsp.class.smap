@@ -1,0 +1,16 @@
+SMAP
+CSVFile_jsp.java
+JSP
+*S JSP
+*F
++ 0 CSVFile.jsp
+CSVFile.jsp
+*L
+5,19:50
+24,9:70
+32:79
+33,9:81
+41:90
+42,2:92
+43,7:94
+*E

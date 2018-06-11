@@ -59,7 +59,6 @@ public final class LogReader_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -178,6 +177,8 @@ public final class LogReader_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </td>\n");
       out.write("            </tr>\n");
       out.write("        </table>\n");
+      out.write("        <p></p>\n");
+      out.write("        Note: The CSV file is only generated for the multiple tests\n");
       out.write("        <p></p>\n");
       out.write("        <table>\n");
       out.write("            <form name=\"myForm\" action=\"downloadAll\" method=\"GET\">\n");

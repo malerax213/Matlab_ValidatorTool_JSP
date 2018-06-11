@@ -3,8 +3,14 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FilenameFilter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class CSVFile_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -43,20 +49,52 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        <title>Full File</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("        <h1>CSV File</h1>\n");
+      out.write("        <table cellspacing='0' border=\"1\" >\n");
+      out.write("            ");
+
+                String fName = System.getProperty("user.dir") + "/solFile/results.csv";
+                String thisLine;
+                FileInputStream fis = new FileInputStream(fName);
+                DataInputStream myInput = new DataInputStream(fis);
+                int i = 0;
+
+                while ((thisLine = myInput.readLine()) != null) {
+                    String strar[] = thisLine.split(",");
+            
+      out.write("<tr>");
+
+                for (int j = 0; j < strar.length; j++) {
+                    if (i != 0) {
+                        out.print("<td> " + strar[j] + "</td> ");
+                    } else {
+                        out.print(" <td> <b>" + strar[j] + "</b> </td> ");
+                    }
+                    i++;
+                }
+                
+      out.write("</tr>");
+
+                }
+                
       out.write("\n");
-      out.write("        <form action=\"Login\" method=\"post\">\n");
-      out.write("            Enter username : <input type =\"text\" name=\"uname\"><br>\n");
-      out.write("            Enter password : <input type=\"password\" name=\"pass\"><br>\n");
-      out.write("            <p></p>\n");
-      out.write("            <input type=\"submit\" name=\"button1\" value=\"Login\" />     \n");
-      out.write("        </form>\n");
+      out.write("        </table>\n");
+      out.write("        <p></p>\n");
+      out.write("        <button type=\"button\" name=\"back\" onclick=\"history.back()\">Go back</button>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

@@ -1,8 +1,4 @@
-<%-- 
-    Document   : activitiesList
-    Created on : 09-mar-2018, 11:39:58
-    Author     : alexa
---%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

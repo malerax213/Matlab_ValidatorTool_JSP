@@ -1,8 +1,4 @@
-<%-- 
-    Document   : activitiesList
-    Created on : 09-mar-2018, 11:39:58
-    Author     : alexa
---%>
+
 <%@page import="java.sql.Blob"%>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>

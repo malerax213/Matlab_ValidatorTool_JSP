@@ -1,8 +1,3 @@
-<%-- 
-    Document   : LogReader
-    Created on : 01-feb-2018, 11:09:03
-    Author     : alex
---%>
 
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.io.FilenameFilter"%>
@@ -131,6 +126,8 @@
                 </td>
             </tr>
         </table>
+        <p></p>
+        Note: The CSV file is only generated for the multiple tests
         <p></p>
         <table>
             <form name="myForm" action="downloadAll" method="GET">

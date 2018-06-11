@@ -5,9 +5,11 @@
         <group>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Login.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/Service.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/downloadAll.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/index.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/summarizedFile.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/SelectActivityDAO.java</file>
+            <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/pdfDownload.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/Validator/Validator.java</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/web/result.jsp</file>
             <file>file:/Users/alex/Documents/TFG/Matlab_ValidatorTool_JSP-master/src/java/multipleValidations.java</file>

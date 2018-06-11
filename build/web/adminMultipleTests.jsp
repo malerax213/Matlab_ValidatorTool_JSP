@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin multiple tests page</title>
+        <title>Multiple activity tests page</title>
     </head>
     <body>
         <%
@@ -14,7 +14,7 @@
                 response.sendRedirect("login.jsp");
             }
         %>
-        <h1>Admin multiple tests page</h1>
+        <h1>Multiple activity tests page</h1>
         <p></p>
         <table border="1">
             <tr>

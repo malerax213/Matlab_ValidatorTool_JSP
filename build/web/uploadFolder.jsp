@@ -1,8 +1,4 @@
-<%-- 
-    Document   : uploadPage1
-    Created on : 05-feb-2018, 10:52:04
-    Author     : alex
---%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

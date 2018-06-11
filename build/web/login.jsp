@@ -1,8 +1,3 @@
-<%-- 
-    Document   : login.jsp
-    Created on : 06-mar-2018, 10:47:54
-    Author     : alexa
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
